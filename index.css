@@ -1,0 +1,58 @@
+body {
+    overflow: hidden;
+}
+
+* {
+    transition: all .2s ease-in-out; 
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#quote-box {
+    max-width: 450px;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 40px 50px;
+}
+
+#text {
+ text-align: center;
+}
+
+button {
+    border-radius: 2px;
+    border: none;
+    padding: 5px 8px;
+    font-size: .8rem;
+    color: #fff
+}
+.actions {
+    display: flex;
+    margin-top: 20px;
+}
+
+.icons {
+    margin-left: auto;
+}
+
+.fa-brands {
+    padding: 5px 8px;
+    margin: 0 5px;
+    color: #fff;
+}
+
+.footer {
+    max-width: 450px;
+    display: block;
+    text-align: center;
+    margin-bottom: -20px;
+}
+
+a {
+    text-decoration: none;
+}
