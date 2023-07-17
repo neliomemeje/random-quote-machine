@@ -1,17 +1,15 @@
 const App = () => {
   const [quotes, setQuotes] = React.useState([]);
   const [randomQuote, setRandomQuote] = React.useState("");
-  const [color, setColor] = React.useState("rgb(71, 46, 50)");
+  const [color, setColor] = React.useState(randomColor());
 
-  const colors = [
-    "rgb(39, 174, 96)",
-    "rgb(115, 168, 87)",
-    "rgb(39, 174, 96)",
-    "rgb(52, 34, 36)",
-    "rgb(243, 156, 18)",
-    "rgb(189, 187, 153)",
-    "rgb(71, 46, 50)",
-  ];
+  function randomColor() {
+    const red = Math.floor(Math.random() * 128);
+    const green = Math.floor(Math.random() * 128);
+    const blue = Math.floor(Math.random() * 128);
+
+    return `rgb(${red},${green},${blue})`;
+  }
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -21,8 +19,7 @@ const App = () => {
       setQuotes(data);
       const randomQuote = Math.floor(Math.random() * data.length);
       setRandomQuote(data[randomQuote]);
-      const randomColor = Math.floor(Math.random() * colors.length);
-      setColor(colors[randomColor]);
+      setColor(randomColor());
     };
     fetchData();
   }, []);
@@ -30,14 +27,15 @@ const App = () => {
   const setNewQuote = () => {
     const randomQuote = Math.floor(Math.random() * quotes.length);
     setRandomQuote(quotes[randomQuote]);
-    const randomColor = Math.floor(Math.random() * colors.length);
-    setColor(colors[randomColor]);
+    setColor(randomColor());
   };
 
+  const transition = "all 1s ease-in-out";
+
   return (
-    <div style={{ backgroundColor: color, color: color }}>
-      <div class="container">
-        <div id="quote-box">
+    <div style={{ backgroundColor: color, transition }}>
+      <div className="container">
+        <div id="quote-box" style={{ transition }}>
           <h3 id="text">{randomQuote.text}</h3>
           <p id="author" style={{ textAlign: "right" }}>
             - {randomQuote.author}
@@ -46,7 +44,7 @@ const App = () => {
             <button
               id="new-quote"
               onClick={setNewQuote}
-              style={{ backgroundColor: color }}
+              style={{ backgroundColor: color, transition }}
             >
               New quote
             </button>
@@ -58,7 +56,7 @@ const App = () => {
               >
                 <i
                   className="fa-brands fa-twitter"
-                  style={{ backgroundColor: color }}
+                  style={{ backgroundColor: color, transition }}
                 ></i>
               </a>
               <a
